@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, HttpCo
 import { PokemonService } from './pokemon.service';
 import { CreatePokemonDto } from './dto/create-pokemon.dto';
 import { UpdatePokemonDto } from './dto/update-pokemon.dto';
+import { ParseMongoIdPipe } from '../common/pipes';
 
 @Controller('pokemon')
 export class PokemonController {
@@ -31,8 +32,8 @@ export class PokemonController {
     return this.pokemonService.update( query, updatePokemonDto);
   }
 
-  @Delete(':no')
-  remove(@Param('no' , ParseIntPipe ) no: number ) {
-    return this.pokemonService.remove( no );
+  @Delete(':id')
+  remove(@Param('id' , ParseMongoIdPipe ) id: string ) {
+    return this.pokemonService.remove( id );
   }
 }
