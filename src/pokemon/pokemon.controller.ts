@@ -18,19 +18,17 @@ export class PokemonController {
     return this.pokemonService.findAll();
   }
 
-  @Get(':no')
-  findOne(@Param( 'no' , ParseIntPipe ) no: number ) {
-    console.log( no )
-    return this.pokemonService.findOne( no );
+  @Get(':query')
+  findOne(@Param( 'query') query : string  ) {
+    return this.pokemonService.findOne( query );
   }
 
-  @Patch(':no')
+  @Patch(':query')
   update(
-    @Param('no' , ParseIntPipe ) no: number, 
+    @Param('query') query: string, 
     @Body() updatePokemonDto: UpdatePokemonDto
   ) {
-    console.log( no )
-    return this.pokemonService.update( no, updatePokemonDto);
+    return this.pokemonService.update( query, updatePokemonDto);
   }
 
   @Delete(':no')
