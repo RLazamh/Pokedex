@@ -12,7 +12,6 @@ import { Pokemon, PokemonSchema } from './entities';
       {
         name:  Pokemon.name, // ES DE LO QUE SE EXTENDIO DEL DOCUMENTO 
         schema: PokemonSchema, 
-
       }
     ])
   ]
