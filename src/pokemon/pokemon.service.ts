@@ -15,9 +15,18 @@ export class PokemonService {
 
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLowerCase()
-
     try{
       const pokemon = await this.pokemonModel.create( createPokemonDto );
+      return pokemon;
+    }
+    catch(error) {
+      this.handleException( error )
+    }
+  }
+
+  async createMany(createPokemonDto: CreatePokemonDto[]) {
+    try{
+      const pokemon = await this.pokemonModel.insertMany( createPokemonDto );
       return pokemon;
     }
     catch(error) {
