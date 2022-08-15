@@ -7,7 +7,6 @@ import { Pokemon, PokemonSchema } from './entities';
 @Module({
   controllers: [PokemonController],
   providers: [PokemonService] ,
-  exports: [PokemonService] ,
   imports: [
     MongooseModule.forFeature([
       {
@@ -15,6 +14,7 @@ import { Pokemon, PokemonSchema } from './entities';
         schema: PokemonSchema, 
       }
     ])
-  ]
+  ],
+  exports: [MongooseModule],
 })
 export class PokemonModule {}

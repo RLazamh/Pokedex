@@ -23,6 +23,12 @@ npm i -g @nestjs/cli
 docker-compose up -d
 ```
 
+5. FIll DB with Seed with request POST
+
+```
+http://localhost:3000/api/v2/seed
+```
+
 ## Stack used
 
 - MongoDB

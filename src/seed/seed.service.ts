@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import axios, { AxiosInstance } from 'axios';
 import { PokeResponse } from './interfaces';
 import { CreatePokemonDto } from '../pokemon/dto/create-pokemon.dto';
-import { PokemonService } from 'src/pokemon/pokemon.service';
+import { InjectModel } from '@nestjs/mongoose';
+import { Pokemon } from 'src/pokemon/entities';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class SeedService {
@@ -11,10 +13,13 @@ export class SeedService {
   private pokemons : CreatePokemonDto[] = [];
 
   constructor(
-    private readonly pokemonService : PokemonService,
+    @InjectModel( Pokemon.name )
+    private readonly pokemonModel : Model<Pokemon>,
   ){}
-  
+
   async executeSeed() {
+
+    await this.pokemonModel.deleteMany();
     const { data } = await this.axios.get<PokeResponse>('https://pokeapi.co/api/v2/pokemon?limit=20');
 
     data.results.forEach(({ name , url }) =>{
@@ -26,9 +31,9 @@ export class SeedService {
       })
     })
 
-    await this.pokemonService.createMany( this.pokemons )
+    await this.pokemonModel.insertMany( this.pokemons )
 
-    return data;
+    return {"Seed executed?": true};
   }
 
 }
