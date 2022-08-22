@@ -1,6 +1,6 @@
 # env
 .env
-yarn.lock
+/yarn
 # compiled output
 /dist
 /node_modules
