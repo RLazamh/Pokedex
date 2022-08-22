@@ -38,6 +38,12 @@ http://localhost:3000/api/v2/seed
 
 ```
 
+## Logs
+
+```
+heroku logs --tail
+```
+
 ## Stack used
 
 - MongoDB
