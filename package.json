@@ -12,7 +12,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node index.js -p $PORT",
+    "start": "node dist/main",
     "start:prod": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -36,7 +36,7 @@
     "class-validator": "^0.13.2",
     "install": "^0.13.0",
     "joi": "^17.6.0",
-    "mongoose": "6.2.2",
+    "mongoose": "^6.2.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
