@@ -48,3 +48,15 @@ heroku logs --tail
 
 - MongoDB
 - Nest
+
+## Product Build
+
+1. Create the file `.env.prod`
+2. Llenar las variables de produccion
+3. Crear una nueva imagen
+
+```
+sudo docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+And quit --build and puth docker -d
