@@ -8,7 +8,7 @@
 2. Execute
 
 ```
-yarn install
+yarn install 
 ```
 
 3. Have the nest installed
